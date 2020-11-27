@@ -17,7 +17,6 @@ public class Book extends Resource {
 
     @Override
     public void printResourceDetails() {
-
         String damages;
         String currentHolder;
 
@@ -45,7 +44,6 @@ public class Book extends Resource {
     }
 
     public void addDamages(String damages) {
-
         if (this.damages.length() == 0) {
             this.damages += damages;
         } else {
