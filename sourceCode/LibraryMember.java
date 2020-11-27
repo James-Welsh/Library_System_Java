@@ -9,7 +9,14 @@ public class LibraryMember {
     private ArrayList<Book> books;
     private ArrayList<String> messages;
 
-    public LibraryMember() {
+    public LibraryMember(String memberId, String firstName, String lastName,
+            String email) {
 
+        this.memberId = memberId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.books = new ArrayList<Book>();
+        this.messages = new ArrayList<String>();
     }
 }
