@@ -19,4 +19,8 @@ public class LibraryMember {
         this.books = new ArrayList<Book>();
         this.messages = new ArrayList<String>();
     }
+
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
 }
