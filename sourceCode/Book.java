@@ -1,10 +1,13 @@
 /**
  * <h1>Book</h1>
  * Represents a book within the library that inherrits from the Resource class.
+ * This class adds an ISBN for the book, the edition, a string representing
+ * damages and the current LibraryMember holding the book. A book can be held
+ * by 0 or 1 LibraryMembers.
  * 
  * @author James Welsh
  * @version 1.0
- * @since 2020-11-271
+ * @since 2020-11-27
  * */
  
 public class Book extends Resource {

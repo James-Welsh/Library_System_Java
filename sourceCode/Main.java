@@ -9,5 +9,11 @@ public class Main {
         book.setCurrentHolder(mem);
         book.addDamages("new damage :0");
         book.printResourceDetails();
+
+        ElectronicResource resource = new ElectronicResource("12", "title", "me",
+                123, 123, "pdf");
+
+        System.out.println("");
+        resource.addDevice(null);
     }
 }
