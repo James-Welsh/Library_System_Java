@@ -86,9 +86,40 @@ public class LibraryMember {
     }
 
     /**
-     * Adds a book to the users list of books 
+     * Adds a book to the users list of books and sets the member as its holder.
+     * If the book is not available then the user is shown an appropriate
+     * message.
+     *
+     * @param book  The book the user is attempting to take out.
      * */
     public void addBook(Book book) {
-        d
+        if (book.isAvailable()) {
+            book.setCurrentHolder(this);
+            this.books.add(book);
+        } else {
+            System.out.println("The book you are trying to borrow is currently "
+                    + "not available.");
+        }
     }
+
+    /**
+     * Allows the library member to return the book back to the libraty, where
+     * it will be available for another member to take out.
+     *
+     * @param book  The book the user is attempting to return.
+     * */
+    public void returnBook(Book book) {
+        if (this.books.contains(book)) {
+            book.makeBookAvailible();
+            this.books.remove(book);
+        } else {
+            System.out.println("Sorry you are not currently a holder of this " +
+                    "book and therefore cannot return it.");
+        }
+    }
+
+    /**
+     * Prints details on all of the books the user currently has on loan.
+     * */
+    p
 }
