@@ -13,15 +13,41 @@
 
 public abstract class Resource {
     
+	private Library library;
     private String resourceId;
     private String title;
     private String author;
     private int publicationYear;
     private int numberOfPages;
+    
+    /**
+     * A generic constructor for the class that initialises the data members
+     * to sane values.
+     */
+    public Resource() {
+    	this.library = null;
+    	this.resourceId = "00000000";
+    	this.title = "Title";
+    	this.author = "Author";
+    	this.publicationYear = 1900;
+    	this.numberOfPages = 100;
+    }
 
-    public Resource(String resourceId, String title, String author,
-            int publicationYear, int numberOfPages) {
+    /**
+     * A constructor that can be used to easily set values for every data
+     * member upon initialisation of an object. Mainly used for testing.
+     * 
+     * @param library			The library object that contains the resource.
+     * @param resourceId		The identification number for the resource.
+     * @param title				The title of the resource.
+     * @param author			The author of the resource.
+     * @param publicationYear	The year of the resources publication.
+     * @param numberOfPages		The number of pages contained within the resource.
+     */
+    public Resource(Library library, String resourceId, String title,
+    		String author, int publicationYear, int numberOfPages) {
         
+    	this.library = library;
         this.resourceId = resourceId;
         this.title =  title;
         this.author = author;
@@ -29,6 +55,102 @@ public abstract class Resource {
         this.numberOfPages = numberOfPages;
     }
 
+	/**
+	 * @return the library
+	 */
+	public Library getLibrary() {
+		return library;
+	}
+
+	/**
+	 * @param library the library to set
+	 */
+	public void setLibrary(Library library) {
+		this.library = library;
+	}
+
+	/**
+	 * @return the resourceId
+	 */
+	public String getResourceId() {
+		return resourceId;
+	}
+
+	/**
+	 * A resourceId must be at 8 characters long.
+	 * 
+	 * @param resourceId the resourceId to set
+	 */
+	public void setResourceId(String resourceId) {
+		if (resourceId.length() == 8) {
+			this.resourceId = resourceId;
+		} else {
+			System.out.println("resourceId must be 8 characters long.");
+		}
+	}
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the author
+	 */
+	public String getAuthor() {
+		return author;
+	}
+
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	/**
+	 * @return the publicationYear
+	 */
+	public int getPublicationYear() {
+		return publicationYear;
+	}
+
+	/**
+	 * @param publicationYear the publicationYear to set
+	 */
+	public void setPublicationYear(int publicationYear) {
+		this.publicationYear = publicationYear;
+	}
+
+	/**
+	 * @return the numberOfPages
+	 */
+	public int getNumberOfPages() {
+		return numberOfPages;
+	}
+
+	/**
+	 * Sets the number of pages a resource has. It cannot be less than 1.
+	 * 
+	 * @param numberOfPages the numberOfPages to set. Must be greater than 0.
+	 */
+	public void setNumberOfPages(int numberOfPages) {
+		if (numberOfPages > 0) {
+			this.numberOfPages = numberOfPages;
+		} else {
+			System.out.println("A resource can not have less than one page.");
+		}
+	}
+	
     /**
      * print all the data members in a easy to read format.
      * */
@@ -38,4 +160,6 @@ public abstract class Resource {
                 "Year Published: " + this.publicationYear + "\n" + "Pages: " +
                 this.numberOfPages);
     }
+
+
 }

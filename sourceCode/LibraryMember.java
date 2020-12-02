@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class LibraryMember {
 
+	private Library library;
     private String memberId;
     private String firstName;
     private String lastName;
@@ -22,9 +23,10 @@ public class LibraryMember {
     private ArrayList<Book> books;
     private ArrayList<String> messages;
 
-    public LibraryMember(String memberId, String firstName, String lastName,
+    public LibraryMember(Library library, String memberId, String firstName, String lastName,
             String email) {
-
+    	
+    	this.library = library;
         this.memberId = memberId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,7 +35,90 @@ public class LibraryMember {
         this.messages = new ArrayList<String>();
     }
 
+	/**
+	 * @return the library
+	 */
+	public Library getLibrary() {
+		return library;
+	}
+
+	/**
+	 * @param library the library to set
+	 */
+	public void setLibrary(Library library) {
+		this.library = library;
+	}
+
+	/**
+	 * @return the memberId
+	 */
+	public String getMemberId() {
+		return memberId;
+	}
+	
+	/**
+	 * 
+	 * Sets the value of memberId. This must be a string of length 8 and cannot be the same
+	 * as any other member of the library.
+	 * 
+	 * @param memberId	The memberId string to set.
+	 * 
+	 * @return true if the member was successfully added and false otherwise.
+	 */
+	public boolean setMemberId(String memberId) {
+		if (memberId.length() != 8) {
+			System.out.println("Sorry, the members Id must be 8 characters long.");
+			return false;
+		}
+		
+		for (LibraryMember member : this.library.getLibraryMembers()) {
+			if (memberId.equals(member.getMemberId())) {
+				System.out.println("Sorry member Id already exists.");
+				return false;
+			}
+		}
+		
+		this.memberId = memberId;
+		
+	}
+	
     /**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	
+	/**
      * Changes the users email address. It checks that the String enetered
      * contains an "@" and is therefore deemed to be a vaild email address.
      *
@@ -47,6 +132,20 @@ public class LibraryMember {
             System.out.println("Please enter a valid email address.");
         }
     }
+
+	/**
+	 * @return the books
+	 */
+	public ArrayList<Book> getBooks() {
+		return books;
+	}
+
+	/**
+	 * @return the messages
+	 */
+	public ArrayList<String> getMessages() {
+		return messages;
+	}
 
     /**
      * Prints all the data members of the class in an easy to read format.
@@ -108,18 +207,40 @@ public class LibraryMember {
      *
      * @param book  The book the user is attempting to return.
      * */
-    public void returnBook(Book book) {
-        if (this.books.contains(book)) {
-            book.makeBookAvailible();
-            this.books.remove(book);
-        } else {
-            System.out.println("Sorry you are not currently a holder of this " +
+    public boolean returnBook(Book book) {
+        if (!this.books.contains(book)) {
+            System.out.println("Sorry, you are not currently a holder of this " +
                     "book and therefore cannot return it.");
+            return false;
+        } else if (!this.library.getBooks().contains(book)) {
+        	System.out.println("Sorry, this book does not belong to this library.");
+        	return false;
+        } else {
+        	book.makeBookAvailible();
+        	this.books.remove(book);
+        	System.out.println("Book successfully returned!");
         }
     }
 
     /**
-     * Prints details on all of the books the user currently has on loan.
+     * Prints details on all of the books the user currently has on loan. If the
+     * user has no books an appropriate message is shown.
      * */
-    p
+    public void printBooks() {
+    	if (this.books.isEmpty()) {
+    		System.out.println("Sorry, you currently have no books on loan.");
+    	} else {
+	    	for (Book book : books) {
+				book.printResourceDetails();
+			}
+    	}
+    }
+    
+    /**
+     *
+     * @return The number of books the libraryMember currently has out on loan.
+     */
+    public int numberOfBooksOnLoan() {
+    	return this.books.size();
+    }
 }
