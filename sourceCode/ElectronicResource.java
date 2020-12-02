@@ -107,7 +107,7 @@ public class ElectronicResource extends Resource {
      * */
     public void printAvailableDevices() {
         for (ElectronicDevice electronicDevice : compatableDevices) {
-            if (electronicDevice.checkAvailability()) {
+            if (electronicDevice.isAvailable()) {
                 electronicDevice.printDeviceDetails();
             } 
         }

@@ -79,6 +79,7 @@ public class LibraryMember {
 		}
 		
 		this.memberId = memberId;
+		return true;
 		
 	}
 	
