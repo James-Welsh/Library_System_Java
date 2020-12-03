@@ -129,7 +129,8 @@ public abstract class Resource {
 	}
 
 	/**
-	 * @param publicationYear the publicationYear to set
+	 * @param publicationYear 	The publicationYear to set a negative year
+	 * 							denotes years B.C. and positive years A.C.						
 	 */
 	public void setPublicationYear(int publicationYear) {
 		this.publicationYear = publicationYear;

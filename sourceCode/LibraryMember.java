@@ -22,6 +22,16 @@ public class LibraryMember {
     private String email;
     private ArrayList<Book> books;
     private ArrayList<String> messages;
+    
+    public LibraryMember() {
+    	this.library = null;
+        this.memberId = "000000";
+        this.firstName = "fName";
+        this.lastName = "lName";
+        this.email = "email@email";
+        this.books = new ArrayList<Book>();
+        this.messages = new ArrayList<String>();
+    }
 
     public LibraryMember(Library library, String memberId, String firstName, String lastName,
             String email) {

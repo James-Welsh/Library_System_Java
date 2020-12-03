@@ -303,6 +303,45 @@ public class Library {
 	
 	/**
 	 * 
+	 * @param resource
+	 */
+	public void addResource(Resource resource) {
+		if (resource == null) {
+			System.out.println("resource parameter cannot be null");
+		} else {
+			this.libraryResources.add(resource);
+			resource.setLibrary(this);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param member
+	 */
+	public void addLibraryMember(LibraryMember member) {
+		if (member == null) {
+			System.out.println("member parameter cannot be null");
+		} else {
+			this.libraryMembers.add(member);
+			member.setLibrary(this);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param device
+	 */
+	public void addElectronicDevice(ElectronicDevice device) {
+		if (device == null) {
+			System.out.println("device parameter cannot be null");
+		} else {
+			this.libraryDevices.add(device);
+			device.setLibrary(this);
+		}
+	}
+	
+	/**
+	 * 
 	 * @param book
 	 * @param member
 	 */
