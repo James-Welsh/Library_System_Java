@@ -261,5 +261,24 @@ class BookTest {
 		book.makeBookAvailible();
 		assert book.getCurrentHolder() == null;
 	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	void testContructorWithParameters() {
+		Library library = new Library();
+		Book testBook = new Book(library, "123", "testTitle", "testAuthor", 100, 200,
+				"ISBN", "5th edition");
+		
+		assert testBook.getLibrary() == library;
+		assert testBook.getResourceId().equals("123");
+		assert testBook.getTitle().equals("testTitle");
+		assert testBook.getAuthor().equals("testAuthor");
+		assert testBook.getPublicationYear() == 100;
+		assert testBook.getNumberOfPages() == 200;
+		assert testBook.getISBN().equals("ISBN");
+		assert testBook.getEdition().equals("5th edition");
+	}
 
 }
