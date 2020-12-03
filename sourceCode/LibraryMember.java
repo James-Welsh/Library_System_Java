@@ -46,7 +46,11 @@ public class LibraryMember {
 	 * @param library the library to set
 	 */
 	public void setLibrary(Library library) {
-		this.library = library;
+		if (library == null) {
+			System.out.println("library parameter cannot be null.");
+		} else {
+			this.library = library;
+		}
 	}
 
 	/**
@@ -184,6 +188,14 @@ public class LibraryMember {
             }
         }
     }
+    
+    public void reviceMessage(String message) {
+    	if (message.length() > 0) {
+    		this.messages.add(message);
+    	} else {
+    		System.out.println("Message must contain at least one character.");
+    	}
+    }
 
     /**
      * Adds a book to the users list of books and sets the member as its holder.
@@ -208,19 +220,18 @@ public class LibraryMember {
      *
      * @param book  The book the user is attempting to return.
      * */
-    public boolean returnBook(Book book) {
+    public void returnBook(Book book) {
         if (!this.books.contains(book)) {
             System.out.println("Sorry, you are not currently a holder of this " +
                     "book and therefore cannot return it.");
-            return false;
-        } else if (!this.library.getBooks().contains(book)) {
+        } else if (!this.library.getLibraryResources().contains((Resource) book)) {
         	System.out.println("Sorry, this book does not belong to this library.");
-        	return false;
         } else {
         	book.makeBookAvailible();
         	this.books.remove(book);
         	System.out.println("Book successfully returned!");
         }
+        
     }
 
     /**

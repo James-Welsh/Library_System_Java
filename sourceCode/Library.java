@@ -145,7 +145,24 @@ public class Library {
 	 * @return
 	 */
 	public boolean containsResource(Resource resource) {
+		if (resource == null) {
+			System.out.println("resource parameter cannot be null.");
+			return false;
+		}
 		return (this.libraryResources.contains(resource));
+	}
+	
+	/**
+	 * 
+	 * @param member
+	 * @return
+	 */
+	public boolean containsLibraryMember(LibraryMember member) {
+		if (member == null) {
+			System.out.println("member parameter cannot be null.");
+			return false;
+		}
+		return (this.libraryMembers.contains(member));
 	}
 	
 	/**
@@ -154,7 +171,9 @@ public class Library {
 	 * @param newTitle
 	 */
 	public void editResourceTitle(Resource resource, String newTitle) {
-		if (this.containsResource(resource)) {
+		if (resource == null) {
+			System.out.println("resource parameter cannot be null.");
+		} else if (this.containsResource(resource)) {
 			resource.setTitle(newTitle);
 		} else {
 			System.out.println("Resource does not exist in the library.");
@@ -167,8 +186,11 @@ public class Library {
 	 * @return
 	 */
 	public Resource findResource(Resource resource) {
-		if (this.libraryResources.isEmpty()) {
-			System.out.println("There are no resources to search.");
+		if (resource == null) {
+			System.out.println("resource parameter cannot be null.");
+			return null;
+		} else if (this.libraryResources.isEmpty()) {
+			System.out.println("Resource does not exist in the library.");
 			return null;
 		} else if (this.containsResource(resource)) {
 			return resource;
@@ -176,6 +198,7 @@ public class Library {
 			return null;
 		}
 	}
+
 	
 	/**
 	 * 
@@ -234,7 +257,9 @@ public class Library {
 	 * @param resource
 	 */
 	public void removeResource(Resource resource) {
-		if (this.libraryResources.isEmpty()) {
+		if (resource == null) {
+			System.out.println("resource parameter cannot be null.");
+		} else if (this.libraryResources.isEmpty()) {
 			System.out.println("There are no resources to remove.");
 		} else if (this.libraryResources.contains(resource)) {
 			this.libraryResources.remove(resource);
@@ -243,6 +268,130 @@ public class Library {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param index
+	 */
+	public void removeResourceByIndex(int index) {
+		if (index < this.libraryResources.size() && index >= 0) {
+			this.libraryResources.remove(index);
+		} else {
+			System.out.println("Index proovided does not exist.");
+		}
+	}
 	
+	/**
+	 * 
+	 */
+	public void printAvailableBooks() {
+		for (Resource resource : libraryResources) {
+			if (resource instanceof Book) {
+				if (((Book) resource).isAvailable()) {
+					((Book)resource).printResourceDetails();
+				}
+			}
+		}
+	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public int numberOfResources() {
+		return this.libraryResources.size();
+	}
+	
+	/**
+	 * 
+	 * @param book
+	 * @param member
+	 */
+	public void lendBook(Book book, LibraryMember member) {
+		if (book == null || member == null) {
+			System.out.println("Neither of the parameters can be a null value.");
+		} else if (!this.containsLibraryMember(member)) {
+			System.out.println("Member does not exist in library.");	
+		} else if (!this.containsResource(book)) {
+			System.out.println("Book does not exist in library.");
+		} else if (!book.isAvailable()){
+			System.out.println("Book is curently unavailable.");
+		} else if (member.numberOfBooksOnLoan() > 5) {
+			System.out.println("You can not take out more than 5 books at any one time");
+		} else {
+			member.addBook(book);
+			book.setCurrentHolder(member);
+			System.out.println("Book successfully loaned.");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param book
+	 * @param addDamages
+	 * @param damages
+	 */
+	public void returnBook(Resource book, boolean addDamages, String damages) {
+		if (book == null) {
+			System.out.println("book parameter cannot be null.");
+		} else if (!this.containsResource(book)) {
+			System.out.println("Resource does not exist in this library.");
+		} else if (book instanceof ElectronicResource) {
+			System.out.println("Electronic resource is not a book and cannot be returned.");
+		} else if (addDamages) {
+			((Book)book).addDamages(damages);
+			((Book)book).getCurrentHolder().returnBook((Book)book);
+			System.out.println("Book returned, and damages added.");
+		} else {
+			((Book)book).getCurrentHolder().returnBook((Book)book);
+			System.out.println("Book returned with no new damages");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param message
+	 */
+	public void sendMessage(String message) {
+		for (LibraryMember member : libraryMembers) {
+			if (member.numberOfBooksOnLoan() > 0) {
+				member.reviceMessage(message);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void printAllPhysicalResources() {
+		boolean foundResource = false;
+		
+		for (Resource resource : libraryResources) {
+			if (resource instanceof Book) {
+				foundResource = true;
+				((Book)resource).printResourceDetails();
+			}
+		}
+		
+		if (!foundResource) {
+			System.out.println("Library contains no physical resources :(");
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void printAllElectronicResources() {
+		boolean foundResource = false;
+		
+		for (Resource resource : libraryResources) {
+			if (resource instanceof ElectronicResource) {
+				foundResource = true;
+				((ElectronicResource)resource).printResourceDetails();
+			}
+		}
+		
+		if (!foundResource) {
+			System.out.println("Library contains no electronic resources :(");
+		}
+	}
 }

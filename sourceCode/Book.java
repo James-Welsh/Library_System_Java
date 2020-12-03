@@ -117,13 +117,17 @@ public class Book extends Resource {
 
 	/**
 	 * Changes the current owner to a new one, or if there is no owner (i.e. 
-	 * currentHolder is set to null) an owner is attributed to the book.
+	 * currentHolder is set to null) an owner is attributed to the book. It
+	 * will not let the libraryMember object be set to null. This can be done
+	 * using the 'makeBookAvailable()' function.
 	 *
 	 * @param libraryMember The member of the library who the ownership of the
 	 *                      book is transferred to.
 	 * */
 	public void setCurrentHolder(LibraryMember libraryMember) {
-	    if (!this.isAvailable()) {
+		if (libraryMember == null) {
+			System.out.println("libraryMember parameter cannot be null.");
+		} else if (!this.isAvailable()) {
 	    	System.out.println("Sorry, this book already belongs to another member.");
 	    } else if (libraryMember.getLibrary() != super.getLibrary()) {
 	    	//If the libraryMember does not belong to the same library as the book.

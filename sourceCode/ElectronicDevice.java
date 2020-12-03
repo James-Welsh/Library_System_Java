@@ -63,7 +63,11 @@ public class ElectronicDevice {
 	 * @param library the library to set
 	 */
 	public void setLibrary(Library library) {
-		this.library = library;
+		if (library == null) {
+			System.out.println("library parameter cannot be null.");
+		} else {
+			this.library = library;
+		}
 	}
 
 	/**
