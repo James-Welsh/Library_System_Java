@@ -32,26 +32,6 @@ public class ElectronicResource extends Resource {
     }
 
     /**
-     * A constructor that can be used to easily set values for every data
-     * member upon initialisation of an object. Mainly used for testing.
-     *
-     * @param library					The library object that contains the electronic resource.
-     * @param resourceId				The identification number for the electronic resource.
-     * @param title						The title of the electronic resource.
-     * @param author					The author of the electronic resource.
-     * @param publicationYear			The year of the electronic resources publication.
-     * @param numberOfPages				The number of pages contained within the electronic resource.
-     * @param electronicResourceType	The type of electronic resource.
-     */
-    public ElectronicResource(Library library, String resourceId, String title, String author,
-            int publicationYear, int numberOfPages, String electronicResourceType) {
-
-        super(library, resourceId, title, author, publicationYear, numberOfPages);
-        this.electronicResourceType = electronicResourceType;
-        this.compatableDevices = new ArrayList<ElectronicDevice>();
-    }
-
-    /**
 	 * @return the electronicResourceType
 	 */
 	public String getElectronicResourceType() {

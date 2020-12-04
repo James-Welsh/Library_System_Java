@@ -30,29 +30,6 @@ public class Book extends Resource {
     }
 
     /**
-     * A constructor that can be used to easily set values for every data
-     * member upon initialisation of an object. Mainly used for testing.
-     *
-     * @param library			The library object that contains the book.
-     * @param resourceId		The identification number for the book.
-     * @param title				The title of the book.
-     * @param author			The author of the book.
-     * @param publicationYear	The year of the books publication.
-     * @param numberOfPages		The number of pages contained within the book.
-     * @param ISBN				The string representation of the books ISBN.
-     * @param edition			The specific edition of the book.
-     */
-    public Book(Library library, String resourceId, String title, String author,
-            int publicationYear, int numberOfPages, String ISBN, String edition) {
-
-        super(library, resourceId, title, author, publicationYear, numberOfPages);
-        this.ISBN = ISBN;
-        this.edition = edition;
-        this.damages = "";
-        this.currentHolder = null;
-    }
-
-    /**
 	 * @return the iSBN
 	 */
 	public String getISBN() {
@@ -62,8 +39,8 @@ public class Book extends Resource {
 	/**
 	 * @param iSBN the iSBN to set
 	 */
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+	public void setISBN(String ISBN) {
+		this.ISBN = ISBN;
 	}
 
 	/**

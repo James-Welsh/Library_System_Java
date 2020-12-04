@@ -33,18 +33,6 @@ public class LibraryMember {
         this.messages = new ArrayList<String>();
     }
 
-    public LibraryMember(Library library, String memberId, String firstName, String lastName,
-            String email) {
-    	
-    	this.library = library;
-        this.memberId = memberId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.books = new ArrayList<Book>();
-        this.messages = new ArrayList<String>();
-    }
-
 	/**
 	 * @return the library
 	 */

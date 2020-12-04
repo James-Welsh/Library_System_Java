@@ -33,28 +33,6 @@ public abstract class Resource {
     	this.numberOfPages = 100;
     }
 
-    /**
-     * A constructor that can be used to easily set values for every data
-     * member upon initialisation of an object. Mainly used for testing.
-     * 
-     * @param library			The library object that contains the resource.
-     * @param resourceId		The identification number for the resource.
-     * @param title				The title of the resource.
-     * @param author			The author of the resource.
-     * @param publicationYear	The year of the resources publication.
-     * @param numberOfPages		The number of pages contained within the resource.
-     */
-    public Resource(Library library, String resourceId, String title,
-    		String author, int publicationYear, int numberOfPages) {
-        
-    	this.library = library;
-        this.resourceId = resourceId;
-        this.title =  title;
-        this.author = author;
-        this.publicationYear = publicationYear;
-        this.numberOfPages = numberOfPages;
-    }
-
 	/**
 	 * @return the library
 	 */
