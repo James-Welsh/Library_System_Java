@@ -236,8 +236,6 @@ public class LibraryMember {
         if (!this.books.contains(book)) {
             System.out.println("Sorry, you are not currently a holder of this " +
                     "book and therefore cannot return it.");
-        } else if (!this.library.getLibraryResources().contains((Resource) book)) {
-        	System.out.println("Sorry, this book does not belong to this library.");
         } else {
         	book.makeBookAvailible();
         	this.books.remove(book);
