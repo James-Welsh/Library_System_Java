@@ -299,10 +299,11 @@ class LibraryTest {
 	}
 
 	/**
-	 * Tests the removeResource() method.
+	 * Tests the returnBook() method.
 	 * <p>
-	 * Tests that a resource can be removed, and that the expected return
-	 * value is obtained from numberOfResources.
+	 * Tests that a book can only be returned if the member and book belong to the
+	 * library, and the user has the book on loan currently. It also tests both the
+	 * case where damages are added and damages are not added.
 	 */
 	@Test
 	void testReturnBook() {
@@ -331,6 +332,12 @@ class LibraryTest {
 		
 	}
 
+	/**
+	 * Tests the sendMessage() method.
+	 * <p>
+	 * Tests that a message is not sent if the libraryMember has no books on loan
+	 * and that a message is sent if the user does have a book out on loan.
+	 */
 	@Test
 	void testSendMessage() {
 		library.addLibraryMember(member);
