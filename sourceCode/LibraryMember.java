@@ -79,22 +79,24 @@ public class LibraryMember {
 	 * 
 	 * @return true if the member was successfully added and false otherwise.
 	 */
-	public boolean setMemberId(String memberId) {
+	public void setMemberId(String memberId) {
+		boolean isAllowed = true;
+		
 		if (memberId.length() != 8) {
 			System.out.println("Sorry, the members Id must be 8 characters long.");
-			return false;
+			isAllowed = false;
+
 		}
 		
 		for (LibraryMember member : this.library.getLibraryMembers()) {
 			if (memberId.equals(member.getMemberId())) {
 				System.out.println("Sorry member Id already exists.");
-				return false;
+				isAllowed = false;
 			}
 		}
-		
-		this.memberId = memberId;
-		return true;
-		
+		if (isAllowed) {
+			this.memberId = memberId;
+		}
 	}
 	
     /**

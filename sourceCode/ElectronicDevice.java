@@ -1,5 +1,5 @@
 /**
- * Respresents an electronic device within the library with data members
+ * Represents an electronic device within the library with data members
  * representing the unique Id, its location in the library, the device type (
  * computer, tablet etc.), and whether the device is currently being used by
  * a library member or not.
@@ -81,7 +81,22 @@ public class ElectronicDevice {
 	 * @param deviceId the deviceId to set
 	 */
 	public void setDeviceId(String deviceId) {
-		this.deviceId = deviceId;
+		boolean IdAllowed = true;
+		
+		if (deviceId.length() != 8) {
+			System.out.println("Sorry, the deviceId must be 8 characters long.");
+			IdAllowed = false;
+		}
+		
+		for (ElectronicDevice device : this.library.getLibraryDevices()) {
+			if (deviceId.equals(device.getDeviceId())) {
+				System.out.println("Sorry device Id already exists.");
+				IdAllowed = false;
+			}
+		}
+		if (IdAllowed) {
+			this.deviceId = deviceId;
+		}
 	}
 
 	/**
