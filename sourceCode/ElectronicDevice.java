@@ -32,35 +32,20 @@ public class ElectronicDevice {
     	this.isAvailable = true;
     	
     }
-    
-    /**
-     * A constructor that can be used to easily set values for every data
-     * member upon initialisation of an object. Mainly used for testing.
-     * 
-     * @param library			The library to which the device belongs.
-     * @param deviceId			The devices Id number.
-     * @param deviceLocation	The location of the device within the Library.
-     * @param deviceType		The type of device "eReader", "PC", etc...
-     */
-    public ElectronicDevice(Library library, String deviceId, String deviceLocation,
-    		String deviceType) {
-        
-    	this.library = library;
-        this.deviceId = deviceId;
-        this.deviceLocation = deviceLocation;
-        this.deviceType = deviceType;
-        this.isAvailable = true;
-    }
 
     /**
-	 * @return the library
+     * Fetches the data stored in the library data member.
+     * 
+	 * @return the library object.
 	 */
 	public Library getLibrary() {
 		return library;
 	}
 
 	/**
-	 * @param library the library to set
+	 * Sets the library object stored in the library data member.
+	 * 
+	 * @param library	The library to set. This cannot be null.
 	 */
 	public void setLibrary(Library library) {
 		if (library == null) {
@@ -71,36 +56,50 @@ public class ElectronicDevice {
 	}
 
 	/**
-	 * @return the deviceId
+	 * Fetches the string representing the deviceId.
+	 * 
+	 * @return the deviceId data member.
 	 */
 	public String getDeviceId() {
 		return deviceId;
 	}
 
 	/**
-	 * @param deviceId the deviceId to set
+	 * Sets the string representing the device. It checks all the argument
+	 * is a valid diviceId.
+	 * 
+	 * @param deviceId	The deviceId to set. This must be 8 characters and cannot
+	 * 					be the same as another devices deviceId that is currently
+	 * 					belonging to the same library.
 	 */
 	public void setDeviceId(String deviceId) {
-		boolean IdAllowed = true;
+		boolean IdAllowed = true; //A flag to keep track of whether the value passes tests.
 		
 		if (deviceId.length() != 8) {
+			//If deviceId is not 8 characters long.
 			System.out.println("Sorry, the deviceId must be 8 characters long.");
 			IdAllowed = false;
 		}
 		
 		for (ElectronicDevice device : this.library.getLibraryDevices()) {
+			//For every device in the library.
 			if (deviceId.equals(device.getDeviceId())) {
+				//If the deviceId passed as an argument is the same as a device in the
+				//library.
 				System.out.println("Sorry device Id already exists.");
 				IdAllowed = false;
 			}
 		}
 		if (IdAllowed) {
+			//If deviceId passed all test and so is allowed.
 			this.deviceId = deviceId;
 		}
 	}
 
 	/**
-	 * @return the deviceLocation
+	 * Gets the string representing the devices location within the library.
+	 * 
+	 * @return the deviceLocation string.
 	 */
 	public String getDeviceLocation() {
 		return deviceLocation;
@@ -119,14 +118,18 @@ public class ElectronicDevice {
 	}
 
 	/**
-	 * @return the deviceType
+	 * Gets the string representing device type.
+	 * 
+	 * @return the deviceType string.
 	 */
 	public String getDeviceType() {
 		return deviceType;
 	}
 
 	/**
-	 * @param deviceType the deviceType to set
+	 *  Sets the deviceType data member to a string passed in.
+	 *  
+	 * @param deviceType	The string representation of he device type.
 	 */
 	public void setDeviceType(String deviceType) {
 		this.deviceType = deviceType;
@@ -136,7 +139,7 @@ public class ElectronicDevice {
 	 *  Checks if a device is currently being used by a library member or not.
 	 *
 	 *  @return A boolean representing whether a device is available or not.
-	 *          Returns true if the device is availble or false otherwise.
+	 *          Returns true if the device is available or false otherwise.
 	 * */
 	public boolean isAvailable() {
 	    return this.isAvailable;

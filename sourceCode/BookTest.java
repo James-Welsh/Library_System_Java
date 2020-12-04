@@ -11,7 +11,11 @@ class BookTest {
 	private Book book = new Book();
 
 	/**
-	 * 
+	 * The test also tests the getLibrary() method as well as setLibrary().
+	 * <p>
+	 * It tests library cannot be set to null using the function, it can be
+	 * set to a library object and that it can be change to another library
+	 * object once library is already set as a library object.
 	 */
 	@Test
 	void testSetLibrary() {
@@ -33,7 +37,11 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * The test tests the getResourceId method as well as setResourceId().
+	 * <p>
+	 * Tests the initialised value, then that it handles strings of less than and
+	 * more than 8 characters. Finally tests that an acceptable value is accepted
+	 * and the resourceId data member is updated.
 	 */
 	@Test
 	void testsetResourceId() {
@@ -53,7 +61,9 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * The test tests the getTitle() method as well as setTitle().
+	 * <p>
+	 * Tests the initialised value before modifying the title and testing again.
 	 */
 	@Test
 	void testSetTitle() {
@@ -65,7 +75,9 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * The test tests the getAuthor() method as well as setAuthor().
+	 * <p>
+	 * Tests the initialised value before modifying the author and testing again.
 	 */
 	@Test
 	void testSetAuthor() {
@@ -77,7 +89,10 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * The tests tests getPublicationYear() as well as setPublicationYear().
+	 * <p>
+	 * Tests the initial value before then testing that both positive and
+	 * negative years are accepted.
 	 */
 	@Test
 	void testSetPublicationYear() {
@@ -93,7 +108,11 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * The test tests getnumberOfPages() as well as setNumberOfPages().
+	 * <p>
+	 * Tests the initial value before testing that the number of pages cannot be
+	 * negative or zero. Finally it tests that for a positive integer numberOfPages
+	 * is updated.
 	 */
 	@Test
 	void testSetNumberOfPages() {
@@ -116,7 +135,9 @@ class BookTest {
 	//All of the super class (Resource) methods have been tested by this point.
 	
 	/**
-	 * 
+	 * Tests getISBN() as well as setISBN().
+	 * <p>
+	 * Tests the initial value before updating it and testing again.
 	 */
 	@Test
 	void testSetISBN() {
@@ -129,7 +150,11 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * Tests getEdition as well as setEdition().
+	 * <p>
+	 * Tests the initialised value before testing that it works for all editions 1 to 13
+	 * and it doesn't allow zero or negative editions. It then chooses a few random edition
+	 * integers.
 	 */
 	@Test
 	void testSetEdition() {
@@ -182,6 +207,12 @@ class BookTest {
 		//Test for editions over 9
 		book.setEdition(10);
 		book.getEdition().equals("10th Edition");
+		book.setEdition(11);
+		book.getEdition().equals("11th Edition");
+		book.setEdition(12);
+		book.getEdition().equals("12th Edition");
+		book.setEdition(13);
+		book.getEdition().equals("13th Edition");
 		book.setEdition(342);
 		book.getEdition().equals("342nd Edition");
 		book.setEdition(123421);
@@ -190,7 +221,13 @@ class BookTest {
 	}
 	
 	/**
-	 * This test tests both getCurrentHolder() and isAvailable() by proxy.
+	 * This test tests both getCurrentHolder() and isAvailable() as well as
+	 * setCurrentHolder().
+	 * <p>
+	 * Tests book cannot be set to null, it can be set if a member belonging to
+	 * the same library as the book attempts to take it out and the book is available.
+	 * It also tests that both book and member have to belong to the library and that
+	 * the member cannot be changed if book is currently out on loan.
 	 */
 	@Test
 	void testSetCurrentHolder() {
@@ -226,7 +263,10 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * Tests the addDamages() and the getDamages methods.
+	 *<p>
+	 * Tests the initial value, that the initial damage can be set and then that
+	 * subsequent damages are appended and separated by a comma.
 	 */
 	@Test
 	void testAddDamages() {
@@ -242,7 +282,10 @@ class BookTest {
 	}
 	
 	/**
-	 * 
+	 * Tests the makeBookAvailable() method.
+	 * <p>
+	 * Tests initial value, sets a new holder and then checks that the function
+	 * successfully sets the currentHolder to null.
 	 */
 	@Test
 	void testMakeBookAvailable() {

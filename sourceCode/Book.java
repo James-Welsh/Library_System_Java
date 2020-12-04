@@ -30,28 +30,34 @@ public class Book extends Resource {
     }
 
     /**
-	 * @return the iSBN
+     * Gets the string representing the ISBN of a book.
+     * 
+	 * @return the string representation of the books ISBN.
 	 */
 	public String getISBN() {
 		return ISBN;
 	}
 
 	/**
-	 * @param iSBN the iSBN to set
+	 * Sets the ISBN to the given string passed into the function.
+	 * 
+	 * @param iSBN	The string representation of the books ISBN
 	 */
 	public void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
 
 	/**
-	 * @return the edition
+	 * Gets the string representing the edition of the book
+	 * 
+	 * @return the getEdition string.
 	 */
 	public String getEdition() {
 		return edition;
 	}
 
 	/**
-	 * Sets the value of the data member 'edition'.
+	 * Sets the string value of the data member 'edition'.
 	 * 
 	 * @param edition	The integer representation of the edition. The code will then
 	 * 					generate the edition string making sure that it is correct. The
@@ -62,31 +68,38 @@ public class Book extends Resource {
 			System.out.println("Edition cannot be less than 1");
 		}
 		
-		String editionString = "";
-		int finalDigit = edition % 10;
+		String editionString = ""; //Initialise the string to set.
+		int finalDigit = edition % 10; //last individual digit of an integer.
 		
-		if (finalDigit == 1) {
-			editionString += edition + "st Edition";
+		if (edition == 11 || edition == 12 || edition == 13) {
+			editionString = edition + "th Edition"; //11th, 12th, 13th		
+		} else if (finalDigit == 1) {
+			editionString += edition + "st Edition"; //1st
 		} else if (finalDigit == 2) {
-			editionString += edition + "nd Edition";
+			editionString += edition + "nd Edition"; //2nd
 		} else if (finalDigit == 3) {
-			editionString += edition + "rd Edition";
-		} else {
-			editionString = edition + "th Edition";
+			editionString += edition + "rd Edition"; //3rd
+		}  else {
+			editionString = edition + "th Edition"; //4th, 5th, 6th, 7th ,8th ,9th, 10th ...
 		}
 		
 		this.edition = editionString;
 	}
 
 	/**
-	 * @return the damages
+	 * Returns the string representing the damages.
+	 * 
+	 * @return all the damages to the book.
 	 */
 	public String getDamages() {
 		return damages;
 	}
 
 	/**
-	 * @return the currentHolder
+	 * Gets the current library member loaning the book if it is in loan. Returns
+	 * null otherwise.
+	 * 
+	 * @return the currentHolder LibraryMember object.
 	 */
 	public LibraryMember getCurrentHolder() {
 		return currentHolder;
