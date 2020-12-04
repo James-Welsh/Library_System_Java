@@ -1,10 +1,10 @@
 /**
  * Represents a member of the library with the ability to borrow and return
- * books, and use elecctronic devices to access electronic resources. Each
- * user has a membership Id, a first and last name, an email, a list of books on
- * loan and a list of meeages.
+ * books.
+ * Each user has a membership Id, a first and last name, an email, a list of books on
+ * loan and a list of messages.
  * <p>
- * Each user beongs to only one library but can have zero or many books.
+ * Each user belongs to only one library but can have zero or many books.
  *
  * @author James Welsh
  * @version 1.0
@@ -41,7 +41,7 @@ public class LibraryMember {
 	}
 
 	/**
-	 * @param library the library to set
+	 * @param library 	The library member to set, cannot be null.
 	 */
 	public void setLibrary(Library library) {
 		if (library == null) {
@@ -68,21 +68,24 @@ public class LibraryMember {
 	 * @return true if the member was successfully added and false otherwise.
 	 */
 	public void setMemberId(String memberId) {
-		boolean isAllowed = true;
+		boolean isAllowed = true; //track if memberId is allowed.
 		
 		if (memberId.length() != 8) {
+			//If not 8 characters long
 			System.out.println("Sorry, the members Id must be 8 characters long.");
-			isAllowed = false;
+			isAllowed = false; //update flag.
 
 		}
 		
 		for (LibraryMember member : this.library.getLibraryMembers()) {
 			if (memberId.equals(member.getMemberId())) {
+				//if member already exists with identical Id.
 				System.out.println("Sorry member Id already exists.");
-				isAllowed = false;
+				isAllowed = false; //update flag.
 			}
 		}
 		if (isAllowed) {
+			//If memberId is valid.
 			this.memberId = memberId;
 		}
 	}
@@ -124,8 +127,8 @@ public class LibraryMember {
 	}
 	
 	/**
-     * Changes the users email address. It checks that the String enetered
-     * contains an "@" and is therefore deemed to be a vaild email address.
+     * Changes the users email address. It checks that the String entered
+     * contains an "@" and is therefore deemed to be a valid email address.
      *
      * @param email A string representing the library members email address. It
      *              must contain the '@' character at some point in it.
@@ -167,7 +170,7 @@ public class LibraryMember {
     }
 
     /**
-     * gets the library members fullname.
+     * gets the library members full name.
      *
      * @return library members full name.
      * */
@@ -181,18 +184,28 @@ public class LibraryMember {
      * */
     public void printMessages() {
         if (this.messages.isEmpty()) {
+        	//If there are no messages
             System.out.println("You currently have no messages.");
         } else {
+        	//If there are messages to print.
             for (String message : messages) {
                 System.out.println(message);    
             }
         }
     }
     
+    /**
+     * Adds a message to the users list of messages.
+     * 
+     * @param message	The message the user is receiving. Cannot be an empty
+     * 					string.
+     */
     public void reviceMessage(String message) {
     	if (message.length() > 0) {
+    		//If string is not empty.
     		this.messages.add(message);
     	} else {
+    		//If string is empty.
     		System.out.println("Message must contain at least one character.");
     	}
     }
@@ -206,25 +219,29 @@ public class LibraryMember {
      * */
     public void addBook(Book book) {
         if (book.isAvailable()) {
+        	//If book has no current member taking it out on loan.
             book.setCurrentHolder(this);
             this.books.add(book);
         } else {
+        	//If book is not available.
             System.out.println("The book you are trying to borrow is currently "
                     + "not available.");
         }
     }
 
     /**
-     * Allows the library member to return the book back to the libraty, where
+     * Allows the library member to return the book back to the library, where
      * it will be available for another member to take out.
      *
      * @param book  The book the user is attempting to return.
      * */
     public void returnBook(Book book) {
         if (!this.books.contains(book)) {
+        	//If the member does not have the book on loan.
             System.out.println("Sorry, you are not currently a holder of this " +
                     "book and therefore cannot return it.");
         } else {
+        	//If member currently has book on loan.
         	book.makeBookAvailible();
         	this.books.remove(book);
         	System.out.println("Book successfully returned!");
@@ -238,8 +255,10 @@ public class LibraryMember {
      * */
     public void printBooks() {
     	if (this.books.isEmpty()) {
+    		//If no books on loan.
     		System.out.println("Sorry, you currently have no books on loan.");
     	} else {
+    		//If user has books on loan print them.
 	    	for (Book book : books) {
 				book.printResourceDetails();
 			}
@@ -247,6 +266,7 @@ public class LibraryMember {
     }
     
     /**
+     *	Gets the number of books the user currently has on loan.
      *
      * @return The number of books the libraryMember currently has out on loan.
      */
