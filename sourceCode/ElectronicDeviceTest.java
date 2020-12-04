@@ -1,3 +1,8 @@
+/**
+ * Test class for the ElectronicDevice class.
+ * 
+ *  @author James Welsh
+ */
 
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +11,10 @@ class ElectronicDeviceTest {
 	Library library = new Library();
 
 	/**
-	 * 
+	 * Tests both the setLibrary() and getLibrary() methods.
+	 * <p>
+	 * Tests the initial value, that library cannot be passed as a null object
+	 * and that when passed a library object the library data member updates.
 	 */
 	@Test
 	void testSetLibrary() {		
@@ -19,7 +27,10 @@ class ElectronicDeviceTest {
 	}
 
 	/**
-	 * 
+	 * Tests both the setDeviceId() and the getDeviceId() methods.
+	 * <p>
+	 * Tests the initial value, an allowed value, an Id identical to that of
+	 * a device already in the library, and too shot and too long strings.
 	 */
 	@Test
 	void testSetDeviceId() {
@@ -50,7 +61,10 @@ class ElectronicDeviceTest {
 	}
 
 	/**
-	 * 
+	 * Tests both the setDeviceLocation() and getDeviceLocation() methods.
+	 * <p>
+	 * Tests initial value and that when passed a string the deviceLocation
+	 * updates.
 	 */
 	@Test
 	void testSetDeviceLocation() {
@@ -63,20 +77,26 @@ class ElectronicDeviceTest {
 	}
 
 	/**
-	 * 
+	 * Tests both the setDeviceType() and the getDeviceType() methods.
+	 * <p>
+	 * Tests initial value and that when passed a string the deviceType
+	 * updates.
 	 */
 	@Test
 	void testSetDeviceType() {
 		//Test initial value.
-		assert device.getDeviceLocation().equals("");
+		assert device.getDeviceType().equals("");
 		
 		//Test changing device type.
-		device.setDeviceLocation("New type");
-		assert device.getDeviceLocation().equals("New type");
+		device.setDeviceType("New type");
+		assert device.getDeviceType().equals("New type");
 	}
 
 	/**
-	 * 
+	 * Tests both the isAvailable() and setIsAvailable() methods.
+	 * <p>
+	 * Tests the initial value and then that when passed a new boolean
+	 * that isAvailable updates.
 	 */
 	@Test
 	void testSetIsAvailable() {

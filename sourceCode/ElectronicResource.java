@@ -32,7 +32,9 @@ public class ElectronicResource extends Resource {
     }
 
     /**
-	 * @return the electronicResourceType
+     * Gets the electronicResourceType.
+     * 
+	 * @return the electronicResourceType string.
 	 */
 	public String getElectronicResourceType() {
 		return electronicResourceType;
@@ -48,24 +50,30 @@ public class ElectronicResource extends Resource {
 	public void setElectronicResourceType(String electronicResourceType) {
 		String[] allowedValues = {"online paper", "pdf", "ebook"};
 		
-		boolean allowedValue = false;
+		boolean allowedValue = false; //A flag to keep track if the argument is allowed or not.
 		
 		for (String value : allowedValues) {
 			if (electronicResourceType.toLowerCase().equals(value)) {
-				allowedValue = true;
-				break;
+				//Check value is one of the allowed values.
+				allowedValue = true; //update flag.
+				break; // stop loop.
 			}
 		}
 		
 		if (allowedValue) {
+			//If value was allowed.
 			this.electronicResourceType = electronicResourceType.toLowerCase();
 		} else {
+			//If value was not allowed.
 			System.out.println("Reource type " + electronicResourceType + " does not exist.");
 		}
 	}
 
 	/**
-	 * @return the compatableDevices
+	 * Gets the array of compatableDevices that the ElectronicResources can be viewed
+	 * on.
+	 * 
+	 * @return the compatableDevices ArrayList of ElectronicDevices.
 	 */
 	public ArrayList<ElectronicDevice> getCompatableDevices() {
 		return compatableDevices;
@@ -102,9 +110,11 @@ public class ElectronicResource extends Resource {
      * */
     public void addDevice(ElectronicDevice electronicDevice) {
         if (electronicDevice == null) {
+        	//object cannot be passed as null.
             System.out.println("Sorry you entered a null reference as a " +
                     "paramter, this is not allowed.");
         } else if (electronicDevice instanceof ElectronicDevice) {
+        	//Check object type.
             compatableDevices.add(electronicDevice);
         } else {
             System.out.println("The object you entered was not an electronic " +

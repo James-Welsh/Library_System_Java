@@ -1,4 +1,8 @@
-
+/**
+ * Test class for the ElectronicResource class.
+ * 
+ *  @author James Welsh
+ */
 
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +10,10 @@ class ElectronicResourceTest {
 	ElectronicResource resource = new ElectronicResource();
 
 	/**
-	 * 
+	 * Tests both setElectronicResourceType() and getElectronicResourceType().
+	 * <p>
+	 * Tests initial value, a value that should be rejected, and all allowed
+	 * values for electronicRespurceType.
 	 */
 	@Test
 	void testSetElectronicResourceType() {
@@ -27,7 +34,10 @@ class ElectronicResourceTest {
 	}
 
 	/**
-	 * 
+	 * Tests the addDevice() and getCompatableDevices() methods.
+	 * <p>
+	 * Tests array is empty initially and that it behaves as expected when
+	 * multiple devices are added.
 	 */
 	@Test
 	void testAddDevice() {
