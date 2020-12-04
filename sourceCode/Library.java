@@ -354,7 +354,7 @@ public class Library {
 			System.out.println("Book does not exist in library.");
 		} else if (!book.isAvailable()){
 			System.out.println("Book is curently unavailable.");
-		} else if (member.numberOfBooksOnLoan() > 5) {
+		} else if (member.numberOfBooksOnLoan() >= 5) {
 			System.out.println("You can not take out more than 5 books at any one time");
 		} else {
 			member.addBook(book);
