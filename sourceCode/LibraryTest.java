@@ -1,11 +1,10 @@
+import org.junit.jupiter.api.Test;
+
 /**
  * Test class for the Library class.
  * 
  *  @author James Welsh
  */
-
-import org.junit.jupiter.api.Test;
-
 class LibraryTest {
 	private Library library = new Library();
 	private Book book = new Book();

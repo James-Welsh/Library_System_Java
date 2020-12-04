@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Represents a member of the library with the ability to borrow and return
  * books.
@@ -10,9 +12,6 @@
  * @version 1.0
  * @since 2020-11-28
  * */
-
-import java.util.ArrayList;
-
 public class LibraryMember {
 
 	private Library library;
@@ -64,8 +63,6 @@ public class LibraryMember {
 	 * as any other member of the library.
 	 * 
 	 * @param memberId	The memberId string to set.
-	 * 
-	 * @return true if the member was successfully added and false otherwise.
 	 */
 	public void setMemberId(String memberId) {
 		boolean isAllowed = true; //track if memberId is allowed.

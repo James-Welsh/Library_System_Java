@@ -1,10 +1,11 @@
+import org.junit.jupiter.api.Test;
+
 /**
  * Test class for the ElectronicDevice class.
  * 
  *  @author James Welsh
  */
 
-import org.junit.jupiter.api.Test;
 
 class ElectronicDeviceTest {
 	private ElectronicDevice device = new ElectronicDevice();

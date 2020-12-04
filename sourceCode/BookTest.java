@@ -1,12 +1,11 @@
+import org.junit.jupiter.api.Test;
+
 /**
  * Test class for the Book class that also indirectly tests the 
  * Resource class as well.
  * 
  *  @author James Welsh
  */
-
-import org.junit.jupiter.api.Test;
-
 class BookTest {
 	private Book book = new Book();
 

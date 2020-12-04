@@ -1,5 +1,7 @@
+import java.util.ArrayList;
+
 /**
- * <h1>Library</h1>
+ * Library
  * Represents the Library object that will be used to store users, devices, and resources
  * as well as functionality to manipulate data within these objects stored.
  * 
@@ -7,9 +9,6 @@
  * @version 1.0
  * @since 2020-11-27
  * */
-
-import java.util.ArrayList;
-
 public class Library {
     
     private ArrayList<LibraryMember> libraryMembers;
@@ -193,8 +192,8 @@ public class Library {
 	
 	/**
 	 * 
-	 * @param resource
-	 * @param newTitle
+	 * @param resource	The Resource object to edit the title of.
+	 * @param newTitle	The new string to set the title to.
 	 */
 	public void editResourceTitle(Resource resource, String newTitle) {
 		if (resource == null) {
@@ -267,7 +266,8 @@ public class Library {
 	
 	/**
 	 * Searches for and prints Resources with the author searched for.
-	 * @param author
+	 * 
+	 * @param author	The author to search for
 	 */
 	public void findResourceByAuthor(String author) {
 		int numberOfResourcesFound = 0; //initialise variable to 0

@@ -1,10 +1,10 @@
+import org.junit.jupiter.api.Test;
+
 /**
  * Test class for the LibraryMember class.
  * 
  *  @author James Welsh
  */
-
-import org.junit.jupiter.api.Test;
 
 class LibraryMemberTest {
 	

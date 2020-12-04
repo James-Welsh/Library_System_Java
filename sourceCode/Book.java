@@ -1,5 +1,5 @@
 /**
- * <h1>Book</h1>
+ * Book
  * Represents a book within the library that inherits from the Resource class.
  * This class adds an ISBN for the book, the edition, a string representing
  * damages and the current LibraryMember holding the book. A book can be held
@@ -41,7 +41,7 @@ public class Book extends Resource {
 	/**
 	 * Sets the ISBN to the given string passed into the function.
 	 * 
-	 * @param iSBN	The string representation of the books ISBN
+	 * @param ISBN	The string representation of the books ISBN
 	 */
 	public void setISBN(String ISBN) {
 		this.ISBN = ISBN;

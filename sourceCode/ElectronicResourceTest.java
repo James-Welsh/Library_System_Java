@@ -1,11 +1,10 @@
+import org.junit.jupiter.api.Test;
+
 /**
  * Test class for the ElectronicResource class.
  * 
  *  @author James Welsh
  */
-
-import org.junit.jupiter.api.Test;
-
 class ElectronicResourceTest {
 	private ElectronicResource resource = new ElectronicResource();
 

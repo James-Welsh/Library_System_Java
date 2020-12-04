@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Represents an electronic resource at the library. This can be a ebook, pdf,
  * online paper etc. It contains an array of electronic devices that can be
@@ -11,10 +13,6 @@
  * @version 1.0
  * @since 2020-11-28
  */
-
-import java.util.ArrayList;
-
-
 public class ElectronicResource extends Resource {
     
     private ArrayList<ElectronicDevice> compatableDevices;
