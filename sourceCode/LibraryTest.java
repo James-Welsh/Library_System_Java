@@ -236,7 +236,7 @@ class LibraryTest {
 		library.addLibraryMember(member);
 		library.lendBook(book, member);
 		
-		//Test damages are added when true
+		//Test damages are added when true.
 		assert book.getCurrentHolder() == member;
 		assert member.numberOfBooksOnLoan() == 1;
 		library.returnBook(book, true, "Big damages");
@@ -244,7 +244,7 @@ class LibraryTest {
 		assert member.numberOfBooksOnLoan() == 0;
 		assert book.getDamages().equals("Big damages");
 		
-		//Test damages are not added when false
+		//Test damages are not added when false.
 		library.lendBook(book, member);
 		assert book.getCurrentHolder() == member;
 		assert member.numberOfBooksOnLoan() == 1;
@@ -258,7 +258,18 @@ class LibraryTest {
 
 	@Test
 	void testSendMessage() {
-		assert true;
+		library.addLibraryMember(member);
+		library.addResource(book);
+		
+		//Test user does not receive message with no books on loan.
+		library.sendMessage("No one will receive this :(");
+		assert member.getMessages().isEmpty();
+		
+		//Test they do receive the message when loaning a book.
+		library.lendBook(book, member);
+		library.sendMessage("You will receive this");
+		assert member.getMessages().size() == 1;
+		assert member.getMessages().get(0).equals("You will receive this");
 	}
 
 }
