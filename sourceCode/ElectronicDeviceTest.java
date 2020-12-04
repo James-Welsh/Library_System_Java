@@ -7,8 +7,8 @@
 import org.junit.jupiter.api.Test;
 
 class ElectronicDeviceTest {
-	ElectronicDevice device = new ElectronicDevice();
-	Library library = new Library();
+	private ElectronicDevice device = new ElectronicDevice();
+	private Library library = new Library();
 
 	/**
 	 * Tests both the setLibrary() and getLibrary() methods.

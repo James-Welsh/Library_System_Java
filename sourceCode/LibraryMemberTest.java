@@ -1,5 +1,5 @@
 /**
- * Test class for the ElectronicDevice class.
+ * Test class for the LibraryMember class.
  * 
  *  @author James Welsh
  */

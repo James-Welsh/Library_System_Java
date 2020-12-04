@@ -7,7 +7,7 @@
 import org.junit.jupiter.api.Test;
 
 class ElectronicResourceTest {
-	ElectronicResource resource = new ElectronicResource();
+	private ElectronicResource resource = new ElectronicResource();
 
 	/**
 	 * Tests both setElectronicResourceType() and getElectronicResourceType().

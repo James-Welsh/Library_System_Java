@@ -1,3 +1,8 @@
+/**
+ * Test class for the Library class.
+ * 
+ *  @author James Welsh
+ */
 
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +12,12 @@ class LibraryTest {
 	private ElectronicResource electronicResource = new ElectronicResource();
 	private LibraryMember member = new LibraryMember();
 	private ElectronicDevice device = new ElectronicDevice();
-	
+
+	/**
+	 * Tests both the setLibraryName() and getLibraryName() methods.
+	 * <p>
+	 * Tests initial value, and that the name can be updated.
+	 */
 	@Test
 	void testSetLibraryName() {
 		//Test initial value.
@@ -18,6 +28,12 @@ class LibraryTest {
 		library.getLibraryName().equals("new name");
 	}
 
+	/**
+	 * Tests the containsResource() method and the addResource() method.
+	 * <p>
+	 * Tests initial value, and that a resource can be added and that
+	 * containsResource() returns the correct bool.
+	 */
 	@Test
 	void testContainsResource() {
 		library.addResource(book);
@@ -32,6 +48,13 @@ class LibraryTest {
 		assert library.containsResource(book);
 	}
 
+	/**
+	 * Tests both containsLibraryMember() and addLibraryMember() methods.
+	 * <p>
+	 * Tests initial value, then that a member can be added and
+	 * containsLibraryMember() returns the correct bool.
+	 * 
+	 */
 	@Test
 	void testContainsLibraryMember() {
 		LibraryMember newMember = new LibraryMember();
@@ -47,6 +70,12 @@ class LibraryTest {
 		assert library.containsLibraryMember(member);
 	}
 
+	/**
+	 * Tests both the editResourceTitle() and getTitle() methods
+	 * <p>
+	 * Tests initial value, and that the title can be updated if it exists
+	 * in the library.
+	 */
 	@Test
 	void testEditResourceTitle() {
 		library.addResource(electronicResource);
@@ -62,6 +91,12 @@ class LibraryTest {
 		assert electronicResource.getTitle().equals("test title");
 	}
 
+	/**
+	 * Tests the findResource() method.
+	 * <p>
+	 * Tests parameter cannot be null, with an empty array, and with both
+	 * books belonging to and not belonging to the library.
+	 */
 	@Test
 	void testFindResource() {
 		//Test parameter cannot be null.
@@ -79,7 +114,10 @@ class LibraryTest {
 	}
 
 	/**
-	 * This test also tests number of resources by proxy
+	 * Tests both the removeResource() and numberOfResources() methods.
+	 * <p>
+	 * Tests that a resource can be removed, and that the expected return
+	 * value is obtained from numberOfResources.
 	 */
 	@Test
 	void testRemoveResource() {
@@ -101,6 +139,11 @@ class LibraryTest {
 		assert library.numberOfResources() == 0;
 	}
 
+	/**
+	 * Tests the removeResourcebyIndex() method.
+	 * <p>
+	 * Tests that a resource can be removed if the index given is within range.
+	 */
 	@Test
 	void testRemoveResourceByIndex() {
 		library.addResource(electronicResource);
@@ -131,6 +174,12 @@ class LibraryTest {
 		assert library.numberOfResources() == 0;
 	}
 
+	/**
+	 * Tests the addResource() method.
+	 * <p>
+	 * Only tests that resource cannot be null as all other functionality
+	 * has been tested in other methods in this class.
+	 */
 	@Test
 	void testAddResource() {
 		//Test it can not be null. All other uses have been tested in other
@@ -140,6 +189,12 @@ class LibraryTest {
 		assert library.getLibraryResources().isEmpty();
 	}
 
+	/**
+	 * Tests the addLibraryMember() method.
+	 * <p>
+	 * Tests that a member cannot be null and that the member is added correctly
+	 * id a LibraryMember object is supplied.
+	 */
 	@Test
 	void testAddLibraryMember() {
 		//Test library member cannot be null.
@@ -153,6 +208,12 @@ class LibraryTest {
 		assert member.getLibrary() == library;
 	}
 
+	/**
+	 * Tests the addElectronicDevice() method.
+	 * <p>
+	 * Tests that a device cannot be null, and that the device is added correctly
+	 * if a ElectronicDevice is passed as an argument.
+	 */
 	@Test
 	void testAddElectronicDevice() {
 		//Test device cannot be null.
@@ -166,6 +227,14 @@ class LibraryTest {
 		assert device.getLibrary() == library;
 	}
 
+	/**
+	 * Tests lendBook() method.
+	 * <p>
+	 * Tests that a a book can be lent in only the case where the book is available
+	 * and belongs to the same library as the member, and the member has less than 5
+	 * books out and belongs to the same library as the book. Both objects passed can
+	 * also not be null.
+	 */
 	@Test
 	void testLendBook() {
 		//Test that neither parameters can be null.
@@ -229,6 +298,12 @@ class LibraryTest {
 		
 	}
 
+	/**
+	 * Tests the removeResource() method.
+	 * <p>
+	 * Tests that a resource can be removed, and that the expected return
+	 * value is obtained from numberOfResources.
+	 */
 	@Test
 	void testReturnBook() {
 		//Test it with correct environment.
