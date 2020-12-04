@@ -1,3 +1,8 @@
+/**
+ * Test class for the ElectronicDevice class.
+ * 
+ *  @author James Welsh
+ */
 
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +12,12 @@ class LibraryMemberTest {
 	private Library library = new Library();
 	private Book book = new Book();
 
+	/**
+	 * Tests both the setLibraryMember() and getLibraryMember() methods.
+	 * <p>
+	 * Tests library cannot be set to null, it can be set to a Library
+	 * object and the initial value.
+	 */
 	@Test
 	void testSetLibrary() {
 		//Test initial value;
@@ -22,6 +33,12 @@ class LibraryMemberTest {
 		
 	}
 
+	/**
+	 * Tests both the setMemberId() and getMemberId() methods.
+	 * <p>
+	 * Tests initial value, an allowed value, that two devices cannot have
+	 * the same ID, and that the Id must be 8 characters long.
+	 */
 	@Test
 	void testSetMemberId() {
 		LibraryMember member2 = new LibraryMember();
@@ -50,6 +67,11 @@ class LibraryMemberTest {
 		assert member2.getMemberId().equals("000000");
 	}
 
+	/**
+	 * Tests both the setFirstName() and getFirstName() methods.
+	 * <p>
+	 * Tests initial value and that firstName can be set to another string.
+	 */
 	@Test
 	void testSetFirstName() {
 		//Test initial value.
@@ -60,6 +82,11 @@ class LibraryMemberTest {
 		assert member.getFirstName().equals("New fName");
 	}
 
+	/**
+	 * Tests both the setLastName() and getLastName() methods.
+	 * <p>
+	 * Tests initial value and that lastName can be set to another string.
+	 */
 	@Test
 	void testSetLastName() {
 		//Test initial value.
@@ -70,6 +97,11 @@ class LibraryMemberTest {
 		assert member.getLastName().equals("New lName");
 	}
 
+	/**
+	 * Tests both the setEmail() and getEmail() methods.
+	 * <p>
+	 * Tests initial value, and that an email has to contain an "@" character.
+	 */
 	@Test
 	void testSetEmail() {
 		//Test initial value.
@@ -84,6 +116,11 @@ class LibraryMemberTest {
 		assert member.getEmail().equals("test@email.com");
 	}
 	
+	/**
+	 * Tests both the receiveMessafe() and geMessages() methods.
+	 * <p>
+	 * Tests initial value and that messages can be received and retrieved.
+	 */
 	@Test
 	void testGetMessages() {
 		member.reviceMessage("test");
@@ -94,6 +131,11 @@ class LibraryMemberTest {
 		assert member.getMessages().get(1).equals("test2");
 	}
 
+	/**
+	 * Tests getFullName() method.
+	 * <p>
+	 * Tests that function returns the correct value.
+	 */
 	@Test
 	void testGetFullName() {
 		member.setFirstName("James");
@@ -103,6 +145,12 @@ class LibraryMemberTest {
 		assert member.getFullName().equals("James Welsh");
 	}
 
+	/**
+	 * Tests addBook() method.
+	 * <p>
+	 * Tests initial value, a book can be added and that an unavailable book
+	 * cannot be added.
+	 */
 	@Test
 	void testAddBook() {
 		member.setLibrary(library);
@@ -122,7 +170,13 @@ class LibraryMemberTest {
 		newMember.addBook(book);
 		assert newMember.getBooks().isEmpty();
 	}
-
+	
+	/**
+	 * Tests returnFunction() method.
+	 * <p>
+	 * Tests returning a book the member does not have on loan and returning a
+	 * book that a member does have on loan.
+	 */
 	@Test
 	void testReturnBook() {
 		Book newBook = new Book();
@@ -143,6 +197,12 @@ class LibraryMemberTest {
 		assert member.getBooks().size() == 0;
 	}
 
+	/**
+	 * Tests both the numberOfBooksOnLoan() method.
+	 * <p>
+	 * Tests initial value, value when one book is added and value when another
+	 * book is added.
+	 */
 	@Test
 	void testNumberOfBooksOnLoan() {
 		Book newBook = new Book();
